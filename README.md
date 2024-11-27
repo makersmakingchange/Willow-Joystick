@@ -31,7 +31,7 @@ The Willow Joystick is open assistive technology (OpenAT). Under the terms of th
 
 The overall cost of materials is yet to be determined, but the goal is to keep it below the price of the LipSync (plus $8 for component shipping).
 
-<img src="Photos/Willow_Joystick.png" width="500" alt="MVP design of Willow joystick.">
+<img src="Photos/Willow_Joystick.JPG" width="500" alt="MVP design of Willow joystick.">
 
 ## Makers Making Change Assistive Device Library
 Device not yet published to MMC library

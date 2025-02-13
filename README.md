@@ -29,7 +29,7 @@ The device is comprised of off-the-shelf electronics and 3D printed parts.
 
 The Willow Joystick is open assistive technology (OpenAT). Under the terms of the open source licenses, the device may be built, used, and improved upon by anyone.
 
-The overall cost of materials is yet to be determined, but the goal is to keep it below the price of the LipSync (plus $8 for component shipping).
+The overall cost of materials is $135.24 CAD
 
 <img src="Photos/Willow_Joystick.png" width="500" alt="Willow joystick.">
 
@@ -39,8 +39,7 @@ Device not yet published to MMC library
 ## How to Obtain the Device
 ### 1. Do-it-Yourself (DIY) or Do-it-Together (DIT)
 
-This is an open-source assistive technology, so anyone is free to build it. All of the files and instructions required to build the device are contained within this repository. Refer to the Maker Guide below.
-As this is a work in progress device not yet published, some files such as User Guide or Maker Guide may not be finished, or even started.
+This is an open-source assistive technology, so anyone is free to build it. All of the files and instructions required to build the device are contained within this repository. Refer to the Maker Guide below for detailed build instructions.
 
 ### 2. Request a build of this device
 
@@ -59,20 +58,17 @@ The Willow joystick is still a work in progress, so you cannot build the device 
 
 ### 1. Read through the Maker Guide
 
-The [Maker Guide](/Documentation/Willow_Joystick_Maker_Guide.pdf)  contains all the necessary information to build this device, including tool lists, assembly instructions, programming instructions (if applicable) and testing.
-The Maker Guide may not be available at this stage in the project.
+The [Maker Guide](/Documentation/Willow_Joystick_Maker_Guide.pdf)  contains all the necessary information to build this device, including tool lists, assembly instructions, programming instructions and testing.
 
 
 ### 2. Order the Off-The-Shelf Components
 
 The [Bill of Materials](/Documentation/Willow_Joystick_BOM.xlsx) lists all of the parts and components required to build the device.
-A Bill of Materials may not be available at this stage in the project, and is subject to change.
 
 
 ### 3. Print the 3D Printable components
 
-All of the files and individual print files can be found in the [/Build_Files/3D_Printing_Files](/Build_Files/3D_Printing_Files/) folder.
-At this stage in the project, these are not the final files and are subject to change at any time.
+All of the files and individual print files can be found in the [/Build_Files/3D_Printing_Files](/Build_Files/3D_Printing_Files/) folder. 
 
 ### 4. Assemble the Willow Joystick
 
@@ -86,11 +82,11 @@ As open source assistive technology, you are welcomed and encouraged to improve 
 <!--- Update the name, link, and version for documentation --->
 | Document             | Version | Link |
 |----------------------|---------|------|
-| Design Rationale     | 0.1     | [Willow_Joystick_Design_Rationale](/Documentation/<Device_Name>_Design_Rationale.pdf)     |
-| Maker Guide          | 0.1     | [Willow_Joystick_Maker_Guide](/Documentation/<Device_Name>_Maker_Guide.pdf)     |
-| Bill of Materials    | 0.1     | [Willow_Joystick_Bill_of_Materials](/Documentation/<Device_Name>_BOM.xlsx)     |
-| User Guide           | 0.1     | [Willow_Joystick_User_Guide](/Documentation/<Device_Name>_User_Guide.pdf)    |
-| Changelog            | 0.1     | [Changelog](CHANGES.txt)     |
+| Design Rationale     | 0.9     | [Willow_Joystick_Design_Rationale](/Documentation/Willow_Joystick_Design_Rationale.pdf)     |
+| Maker Guide          | 0.9     | [Willow_Joystick_Maker_Guide](/Documentation/Willow_Joystick_Maker_Guide.pdf)     |
+| Bill of Materials    | 0.9     | [Willow_Joystick_Bill_of_Materials](/Documentation/Willow_Joystick_BOM.xlsx)     |
+| User Guide           | 0.9     | [Willow_Joystick_User_Guide](/Documentation/Willow_Joystick_User_Guide.pdf)    |
+| Changelog            | 0.9     | [Changelog](CHANGES.txt)     |
 
 ### Design Files
  - [CAD Files](/Design_Files/CAD_Design_Files)
@@ -103,10 +99,10 @@ As open source assistive technology, you are welcomed and encouraged to improve 
 
 
 ## License
-Copyright (c) 2024 Neil Squire Society.
+Copyright (c) 2025 Neil Squire Society.
 
 This repository describes Open Hardware:
- - Everything needed or used to design, make, test, or prepare the <DeviceName> is licensed under the [CERN 2.0 Weakly Reciprocal license (CERN-OHL-W v2) or later](https://cern.ch/cern-ohl ) .
+ - Everything needed or used to design, make, test, or prepare the Willow Joystick is licensed under the [CERN 2.0 Weakly Reciprocal license (CERN-OHL-W v2) or later](https://cern.ch/cern-ohl ) .
  - All software is under the [GNU General Public License v3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl.html).
  - Accompanying material such as instruction manuals, videos, and other copyrightable works that are useful but not necessary to design, make, test, or prepare the Willow Joystick are published under a [Creative Commons Attribution-ShareAlike 4.0 license (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/) .
 
@@ -128,10 +124,12 @@ The documentation template was created by Makers Making Change / Neil Squire Soc
 Designers:
  - Brad Wellington
  - Stephen Moyer
+ - Josie Versloot
+ - Jake McIvor
 
-Testers:
+<!--- Testers:
  - <TESTER 1>
- - <TESTER 2>
+ - <TESTER 2> --->
 
 
 ---
@@ -146,7 +144,6 @@ Makers Making Change leverages the capacity of community based Makers, Disabilit
 
  - Website: [www.MakersMakingChange.com](https://www.makersmakingchange.com/)
  - GitHub: [makersmakingchange](https://github.com/makersmakingchange)
- - X (formerly Twitter): [@makermakechange](https://twitter.com/makermakechange)
  - Instagram: [@makersmakingchange](https://www.instagram.com/makersmakingchange)
  - Facebook: [makersmakechange](https://www.facebook.com/makersmakechange)
  - LinkedIn: [Neil Squire Society](https://www.linkedin.com/company/neil-squire-society/)

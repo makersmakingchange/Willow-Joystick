@@ -28,9 +28,9 @@
 #define MOUSE_RIGHT 2
 #define MOUSE_MIDDLE 4
 #define MOUSE_ALL (MOUSE_LEFT | MOUSE_RIGHT | MOUSE_MIDDLE)
-#define MOUSE_DESCRIPTOR "LipSync Mouse"
+#define MOUSE_DESCRIPTOR "Willow Mouse"
 
-#define GAMEPAD_DESCRIPTOR "LipSync Gamepad"
+#define GAMEPAD_DESCRIPTOR "Willow Gamepad"
 
 // https://github.com/hathach/tinyusb/blob/master/examples/device/hid_generic_inout/src/usb_descriptors.c
 
@@ -175,7 +175,7 @@ void LSUSBMouse::begin(void)
   _buttons = 0;
   this->usb_hid.setPollInterval(1);
   this->usb_hid.setReportDescriptor(mouse_desc_hid_report, sizeof(mouse_desc_hid_report));
-  this->usb_hid.setStringDescriptor(MOUSE_DESCRIPTOR);
+  //this->usb_hid.setStringDescriptor(MOUSE_DESCRIPTOR);
   this->usb_hid.begin();
   if (USB_DEBUG) { Serial.println("USBDEBUG: Initializing USB HID Mouse");  }
 
@@ -405,7 +405,7 @@ LSUSBGamepad::LSUSBGamepad(void)
 {
   this->usb_hid.setPollInterval(1);
   this->usb_hid.setReportDescriptor(gamepad_desc_hid_report, sizeof(gamepad_desc_hid_report));
-  this->usb_hid.setStringDescriptor(GAMEPAD_DESCRIPTOR);
+  //this->usb_hid.setStringDescriptor(GAMEPAD_DESCRIPTOR);
 }
 
 void LSUSBGamepad::begin(void)

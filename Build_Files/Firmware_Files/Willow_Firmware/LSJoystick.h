@@ -48,7 +48,7 @@
 
 #define JOY_INPUT_CHANGE_TOLERANCE 0.1 //The output change tolerance in mT
 
-#define JOY_INPUT_DEADZONE 3          //The input deadzone in mT
+#define JOY_INPUT_DEADZONE 4          //The input deadzone in mT
 
 #define JOY_OUTPUT_DEADZONE_STATUS true //The default output deadzone state (True = enable , False = disable)
 
@@ -305,8 +305,8 @@ void LSJoystick::setMagnetDirection(int magnetXDirection,int magnetYDirection) {
   setMagnetZDirection();
   
   //Evaluate joystick x and y final magnet directions
-  _joystickXDirection = -1 * _magnetZDirection * _magnetXDirection; // Flip x- axis due to flipped sensor
-  _joystickYDirection = -1 * _magnetZDirection * _magnetYDirection; // Flip y- axis due to flipped sensor
+  _joystickXDirection = /*-1*/1 * _magnetZDirection * _magnetXDirection; // Flip x- axis due to flipped sensor
+  _joystickYDirection = /*-1*/1 * _magnetZDirection * _magnetYDirection; // Flip y- axis due to flipped sensor
 }
 
 

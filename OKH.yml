@@ -1,0 +1,84 @@
+title: Willow Joystick
+description: The Willow Joystick is a magnetic low force joystick. It builds off the work
+  done on the LipSync to create a joystick that requires less force to use than
+  any of the OpenAT joysticks in the MMC Library
+intended-use: "The Willow is intended for users that find the existing joystick options in
+  the MMC library too high force or require too large of a range of motion, and
+  need a lower force, lower range of motion option. "
+keywords:
+  - OpenAT
+  - Joystick
+  - Mouse
+  - Low Force
+  - Willow
+  - Open Source
+project-link: https://github.com/makersmakingchange/Willow-Joystick
+image: https://github.com/makersmakingchange/Willow-Joystick/tree/main/Photos/Willow_Joystick.PNG
+made: true
+made-independently: true
+license:
+  hardware: CERN-OHL-W-2.0
+  documentation: CC-BY-SA-4.0
+  software: GPL-3.0-or-later
+licensor:
+  name: Jake McIvor
+  affiliation: Neil Squire Society
+  email: jakem@neilsquire.ca
+okh-manifest-version: 1.0.0
+date-created: 2025-02-13
+date-updated: 2025-02-14
+manifest-author:
+  name: Brad Wellington
+  affiliation: Neil Squire Society
+  email: bradw@neilsquire.ca
+manifest-language: en-CA
+contact:
+  affiliation: Neil Squire Society
+  email: info@neilsquire.ca
+contributors:
+  - name: Josie Versloot
+    affiliation: Neil Squire Society
+    email: josiev@neilsquire.ca
+  - name: Jake McIvor
+    affiliation: Neil Squire Society
+    email: jakem@neilsquire.ca
+  - name: Stephan Dobri
+    affiliation: Neil Squire Society
+    email: stephand@neilsquire.ca
+  - name: Stephen Moyer
+    affiliation: Neil Squire Society
+version: 1.0.0
+development-stage: product
+documentation-home: https://github.com/makersmakingchange/Willow-Joystick/tree/main/Documentation
+archive-download: https://github.com/makersmakingchange/Willow-Joystick/archive/refs/heads/main.zip
+design-files:
+  - path: https://github.com/makersmakingchange/Willow-Joystick/tree/main/Design_Files
+    title: Willow Design Files
+documentation-language: en-CA
+bom: https://github.com/makersmakingchange/Willow-Joystick/blob/main/Documentation/Willow_Joystick_BOM.xlsx
+tool-list: https://github.com/makersmakingchange/Willow-Joystick/blob/main/Documentation/Willow_Joystick_Maker_Guide.pdf
+making-instructions:
+  - path: https://github.com/makersmakingchange/Willow-Joystick/blob/main/Documentation/Willow_Joystick_Maker_Guide.pdf
+    title: Willow Joystick Maker Guide
+manufacturing-files:
+  - path: https://github.com/makersmakingchange/Willow-Joystick/tree/main/Build_Files
+    title: Willow Joystick Build Files
+quality-instructions:
+  - path: https://github.com/makersmakingchange/Willow-Joystick/blob/main/Documentation/Willow_Joystick_Maker_Guide.pdf
+    title: Willow Joystick Maker Guide
+operating-instructions:
+  - path: https://github.com/makersmakingchange/Willow-Joystick/blob/main/Documentation/Willow_Joystick_User_Guide.pdf
+    title: Willow Joystick User Guide
+  - path: https://github.com/makersmakingchange/Willow-Joystick/blob/main/Documentation/Willow_Joystick_Quickstart_Guide.pdf
+    title: Willow Joystick Quickstart Guide
+maintenance-instructions:
+  - title: Willow Joystick User Guide
+disposal-instructions:
+  - path: https://github.com/makersmakingchange/Willow-Joystick/blob/main/Documentation/Willow_Joystick_User_Guide.pdf
+    title: Willow Joystick User Guide
+software:
+  - path: https://github.com/makersmakingchange/Willow-Joystick/tree/main/Build_Files/Firmware_Files
+    title: Willow Joystick Firmware
+derivative-of:
+  title: LipSync
+  web: https://github.com/makersmakingchange/LipSync

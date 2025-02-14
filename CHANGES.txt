@@ -1,6 +1,11 @@
-Version X.Y.Z | YYYY-mmm-DD
+Version 0.9.0 | 2025-02-13
  - Initial Prototype
- - <SUMMARIZE KEY FEATURES>
+ - Magnetic low-force joystick
+ - Range of swappable, customizable toppers
+ - Available mounting adapters
+ - Available wrist ramp
+ - Available nonslip base
+ - Uses existing LipSync Hub
 
 
 

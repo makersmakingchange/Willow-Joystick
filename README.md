@@ -1,23 +1,3 @@
-
-<!--- This is a markdown template for creating the README.md file in a GitHub repository. This file is rendered and displayed automatically when someone visits the repository.
-
-This document includes helper text that will not be displayed when rendered. Any text between the less-than sign + exclamation mark + three hyphen-minus (<!---) and matching three hyphen-minus + greater-than sign will not be displayed. This helper text can be deleted once the corresponding section is completed.
-
-This template has a number of fields that can be searched and replaced with other text:
- - <Device_Name> Replace this with filename-friendly version of the device with underscores. e.g., Open_Wobble_Switch
- - <DeviceName> Replace this with the human-readable name of the device with spaces. e.g., Open Wobble Switch
- - <DesignerName> Replace this with the person or organization responsible for the design. e.g., John Doe.
- - <Repository_Link> Replace this with the web address for the repository. e.g., (e.g., https://github.com/makersmakingchange/Open-Wobble-Switch))
- - <MMCWebLink> This is the website address including an alphanumeric id for the Makers Making Change Website. e.g., 01tJR000000698oYAA. This will come from MMC staff.  
- - <MaterialCost> Replace this with the dollar cost and currency (CAD, USD, etc.) of the materials of the device.
- - <ShippingCost> Replace this with the dollar cost and currency (CAD, USD, etc.) of shipping the device (if possible).
- - <YEAR> year(s) of the copyright
- 
-Any text that is currently holding a space / is an instruction for the person filling in the README is in all capitals, to make it easier to see them in a rendered version.
-
---->
- 
-
 # Willow Joystick
 
 
@@ -25,16 +5,18 @@ Any text that is currently holding a space / is an instruction for the person fi
 <!--- A brief summary of the project. What it does, who it is for, how much it costs. --->
 The Willow joystick is a low force joystick that builds off the magnetic gimbal from the LipSync. The Willow is intended to fill a gap in the Makers Making Change joystick selection and provide a low force option similar to something like the Feather joystick.  
 
-The device is comprised of off-the-shelf electronics and 3D printed parts. 
+The Willow is made up of the Willow Joystick and the Willow Hub. The Joystick is the primary user interface and contains a low-force Hall-Effect joytick. The Hub has a display that provides a graphical interface for independently adjusting settings, as well as it provides the connection to the host device and up to three external assistive switches with 3.5 mm jacks.
+
+The Willow is compatible with a range of host devices that are able to support a USB Mouse, a USB Gamepad and/or a Bluetooth Mouse. Compatible devices include PC and Mac computers and laptops, Android, iOS, and Windows smartphone and tablets, and the Xbox Adaptive Controller.
+
+The device is comprised of off-the-shelf electronics and hardware, a custom PCB and 3D printed parts. The overall cost of materials (including materials required in bulk) for a single build is about $180 (plus shipping). In larger quantities, the cost of materials is closer to $135.
 
 The Willow Joystick is open assistive technology (OpenAT). Under the terms of the open source licenses, the device may be built, used, and improved upon by anyone.
-
-The overall cost of materials is $135.24 CAD
 
 <img src="Photos/Willow_Joystick.png" width="500" alt="Willow joystick.">
 
 ## Makers Making Change Assistive Device Library
-Device not yet published to MMC library
+Makers Making Change Assistive Device Library Listing:[<MMCWebLink>](<MMCWebLink>)
 
 ## How to Obtain the Device
 ### 1. Do-it-Yourself (DIY) or Do-it-Together (DIT)
@@ -43,14 +25,11 @@ This is an open-source assistive technology, so anyone is free to build it. All 
 
 ### 2. Request a build of this device
 
-The Willow joystick is still a work in progress, so you cannot request a build of the device at this time.
-
-<!--- You may also submit a build request through the [Makers Making Change Assistive Device Library Listing](<MMCWebLink>) to have a volunteer maker build the device. As the requestor, you are responsible for reimbursing the maker for the cost of materials and any shipping.--->
+You may also submit a build request through the [Makers Making Change Assistive Device Library Listing](<MMCWebLink>) to have a volunteer maker build the device. As the requestor, you are responsible for reimbursing the maker for the cost of materials and any shipping.
 
 ### 3. Build this device for someone else
 
-The Willow joystick is still a work in progress, so you cannot build the device through the website at this time. Working BoM and build files may be available in this repository.
-<!--- If you have the skills and equipment to build this device, and would like to donate your time to create the device for someone who needs it, visit the [MMC Maker Wanted](https://makersmakingchange.com/maker-wanted/) section.--->
+If you have the skills and equipment to build this device, and would like to donate your time to create the device for someone who needs it, visit the [MMC Maker Wanted](https://makersmakingchange.com/maker-wanted/) section.
 
 
 ## Build Instructions
@@ -82,11 +61,11 @@ As open source assistive technology, you are welcomed and encouraged to improve 
 <!--- Update the name, link, and version for documentation --->
 | Document             | Version | Link |
 |----------------------|---------|------|
-| Design Rationale     | 0.9     | [Willow_Joystick_Design_Rationale](/Documentation/Willow_Joystick_Design_Rationale.pdf)     |
-| Maker Guide          | 0.9     | [Willow_Joystick_Maker_Guide](/Documentation/Willow_Joystick_Maker_Guide.pdf)     |
-| Bill of Materials    | 0.9     | [Willow_Joystick_Bill_of_Materials](/Documentation/Willow_Joystick_BOM.xlsx)     |
-| User Guide           | 0.9     | [Willow_Joystick_User_Guide](/Documentation/Willow_Joystick_User_Guide.pdf)    |
-| Changelog            | 0.9     | [Changelog](CHANGES.txt)     |
+| Design Rationale     | 1.0     | [Willow_Joystick_Design_Rationale](/Documentation/Willow_Joystick_Design_Rationale.pdf)     |
+| Maker Guide          | 1.0     | [Willow_Joystick_Maker_Guide](/Documentation/Willow_Joystick_Maker_Guide.pdf)     |
+| Bill of Materials    | 1.0     | [Willow_Joystick_Bill_of_Materials](/Documentation/Willow_Joystick_BOM.xlsx)     |
+| User Guide           | 1.0     | [Willow_Joystick_User_Guide](/Documentation/Willow_Joystick_User_Guide.pdf)    |
+| Changelog            | 1.0     | [Changelog](CHANGES.txt)     |
 
 ### Design Files
  - [CAD Files](/Design_Files/CAD_Design_Files)
@@ -119,13 +98,30 @@ The device was designed by Brad Wellington.
 <!--- This is the attribution for the template. --->
 The documentation template was created by Makers Making Change / Neil Squire Society and is used under a CC BY-SA 4.0 license. It is available at the following link: [https://github.com/makersmakingchange/OpenAT-Template](https://github.com/makersmakingchange/OpenAT-Template)
 
+The Willow incorporates several commercially available open source hardware components:
+ - [Adafruit TLV493D Triple-Axis Magnetometer - STEMMA QT / Qwiic](https://www.adafruit.com/product/4366). The PCB design is available under a CC-BY-SA 4.0 license at https://github.com/adafruit/Adafruit-TLV493D-PCB. 
+ - [Adafruit 128X64 monochrome OLED Display Board](https://www.adafruit.com/product/938). The PCB design is available under a CC-BY-SA 4.0 license at https://github.com/adafruit/Adafruit-128x64-Monochrome-OLED-PCB.
+ - [SparkFun Qwiic Adapter Board (DEV-14495)](https://www.sparkfun.com/products/14495). The PCB design is available under a CC-BY-SA 4.0 license at https://github.com/sparkfun/Qwiic_Adapter.   
+ - [SparkFun RJ11 Breakout Board (BOB-14021)](https://www.sparkfun.com/products/14021). The PCB design is available under a CC-BY-SA 4.0 license at https://github.com/sparkfun/RJ11_Breakout. 
+
+The Willow firmware utilizes the Arduino development platform, an open-source electronics platform based on easy-to-use hardware and software. Arduino is developed and maintained by the Arduino community, and the project wouldn't be possible without their contributions.
+Arduino is a registered trademark of Arduino AG. For more information about Arduino and to contribute to the community, visit the official Arduino website at www.arduino.cc.
+The Willow Firmware code uses several libraries:
+ - [Adafruit_BusIO](https://github.com/adafruit/Adafruit_BusIO)  by Adafruit
+ - [Adafruit_GFX](https://github.com/adafruit/Adafruit-GFX-Library) by Adafruit
+ - [Adafruit_Sensor](https://github.com/adafruit/Adafruit_Sensor) by Adafruit
+ - [Adafruit_SSD1306](https://github.com/adafruit/Adafruit_SSD1306) by Adafruit
+ - [ArduinoJson](https://github.com/bblanchon/ArduinoJson) by Benoit Blanchon
+ - [TLV493D-A1B6](https://github.com/Infineon/TLV493D-A1B6-3DMagnetic-Sensor) by Infineon Technologies
+
 ### Contributors
 <!--- List the names of the people that contributed to the design. This could include the original source of the idea, designers, testers, documenters, etc. --->
 Designers:
- - Brad Wellington
- - Stephen Moyer
- - Josie Versloot
- - Jake McIvor
+ - Brad Wellington, Neil Squire Society / Makers Making Change.
+ - Stephen Moyer, Neil Squire Society / Makers Making Change.
+ - Josie Versloot, Neil Squire Society / Makers Making Change.
+ - Tyler Fentie, Neil Squire Society / Makers Making Change.
+ - Jake McIvor, Neil Squire Society / Makers Making Change.
 
 <!--- Testers:
  - <TESTER 1>

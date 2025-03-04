@@ -93,7 +93,7 @@ Source Location: https://github.com/makersmakingchange/Willow-Joystick
 
 ## Attribution
 <!--- Provide any necessary attribution for designs or components that are included in the device or as part of the project. --->
-The device was designed by Brad Wellington. 
+The device was designed by Makers Making Change / Neil Squire Society
 
 <!--- This is the attribution for the template. --->
 The documentation template was created by Makers Making Change / Neil Squire Society and is used under a CC BY-SA 4.0 license. It is available at the following link: [https://github.com/makersmakingchange/OpenAT-Template](https://github.com/makersmakingchange/OpenAT-Template)

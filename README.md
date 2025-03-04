@@ -13,7 +13,7 @@ The device is comprised of off-the-shelf electronics and hardware, a custom PCB 
 
 The Willow Joystick is open assistive technology (OpenAT). Under the terms of the open source licenses, the device may be built, used, and improved upon by anyone.
 
-<img src="Photos/Willow_Joystick.png" width="500" alt="Willow joystick.">
+<img src="Photos/Willow_Joystick.jpg" width="500" alt="Willow joystick.">
 
 ## Makers Making Change Assistive Device Library
 Makers Making Change Assistive Device Library Listing:[<MMCWebLink>](<MMCWebLink>)

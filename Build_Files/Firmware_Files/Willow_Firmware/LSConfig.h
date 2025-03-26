@@ -28,16 +28,14 @@
 //***DO NOT CHANGE***//
 #define CONF_LIPSYNC_MODEL 1                // 1: Lipsync w/ Hub
 
-#define CONF_LIPSYNC_VERSION_MAJOR  4
-#define CONF_LIPSYNC_VERSION_MINOR  1
+#define CONF_LIPSYNC_VERSION_MAJOR  1
+#define CONF_LIPSYNC_VERSION_MINOR  0
 #define CONF_LIPSYNC_VERSION_REV  0
 
 const String lipsyncVersionStr = String(CONF_LIPSYNC_VERSION_MAJOR) + "." + String(CONF_LIPSYNC_VERSION_MINOR) + "." + String(CONF_LIPSYNC_VERSION_REV);
 
 // I2C Devices
 #define I2CADDR_DISPLAY 0x3D  // Display address (61)
-#define I2CADDR_LPS22   0x5C  // Modified LPS22 address (92)
-#define I2CADDR_LPS35HW 0x5D  // LPS35HW address (93)
 #define I2CADDR_TLV493D 0x5E  // 3D Hall Effect Sensor (94)
 
 
@@ -164,7 +162,6 @@ const String lipsyncVersionStr = String(CONF_LIPSYNC_VERSION_MAJOR) + "." + Stri
 // Polling rates for each module
 #define CONF_JOYSTICK_POLL_RATE 20          // 20 ms 
 #define CONF_SCROLL_POLL_RATE 30            // 30 ms
-#define CONF_PRESSURE_POLL_RATE 50          // 50 ms
 #define CONF_INPUT_POLL_RATE 20             // 20 ms
 #define CONF_BT_FEEDBACK_POLL_RATE 1000     // 1s         
 #define CONF_DEBUG_POLL_RATE 100            // 100 ms
@@ -199,7 +196,6 @@ const String lipsyncVersionStr = String(CONF_LIPSYNC_VERSION_MAJOR) + "." + Stri
 
 // Polling Timer IDs for each module
 #define CONF_TIMER_JOYSTICK 0
-#define CONF_TIMER_PRESSURE 1
 #define CONF_TIMER_INPUT 2
 #define CONF_TIMER_BLUETOOTH 3
 #define CONF_TIMER_DEBUG 4
@@ -224,10 +220,8 @@ const String lipsyncVersionStr = String(CONF_LIPSYNC_VERSION_MAJOR) + "." + Stri
 // Debug mode values 
 #define CONF_DEBUG_MODE_NONE      0 
 #define CONF_DEBUG_MODE_JOYSTICK  1
-#define CONF_DEBUG_MODE_PRESSURE  2
 #define CONF_DEBUG_MODE_BUTTON    3
 #define CONF_DEBUG_MODE_SWITCH    4
-#define CONF_DEBUG_MODE_SAP       5
 
 #define CONF_DEBUG_MODE_MIN 0
 #define CONF_DEBUG_MODE_MAX 5
@@ -353,23 +347,7 @@ const String lipsyncVersionStr = String(CONF_LIPSYNC_VERSION_MAJOR) + "." + Stri
 #define CONF_JOY_ACCELERATION_LEVEL_MAX 10
 #define CONF_JOY_ACCELERATION_LEVEL_MIN -10
 #define CONF_JOY_ACCELERATION_LEVEL_DEFAULT 0
-
-
-// Sip and Puff Default settings
-#define CONF_SIP_THRESHOLD 3.0                    // hPa
-#define CONF_PUFF_THRESHOLD 3.0                   // hPa
-#define CONF_PRESS_MIN_THRESHOLD 2.0              // hPa
-#define CONF_PRESS_MAX_THRESHOLD 150.0            // hPa
-#define CONF_PRESS_MODE_DEFAULT 1                 // Default pressure mode state = 2 
-                                                  //  0 = None or PRESS_MODE_NONE
-                                                  //  1 = Absolute or PRESS_MODE_ABS
-                                                  //  2 = Differential or PRESS_MODE_DIFF
-                                                  
-                                                  
-// Sip and puff main states 
-#define PRESS_SAP_MAIN_STATE_NONE 0   // No action 
-#define PRESS_SAP_MAIN_STATE_SIP 1    // Sip action sapPressure < -sip threshold
-#define PRESS_SAP_MAIN_STATE_PUFF 2   // Puff action sapPressure > puff threshold
+                                                                                        
 
 // Inputs and related LED feedback settings
 #define CONF_INPUT_LED_DELAY 150          // Led blink time for input actions 
@@ -414,22 +392,6 @@ const accStruct accProperty[]{
 };
 
 /* LIPSYNC INPUT AND OUTPUT MAPPING */
-
-// Sip and Puff Action Mapping
-//  {INPUT ACTION, MOUSE MODE ACTION, GAMEPAD MODE ACTION, MENU MODE ACTION, minTime, maxTime}
-const inputActionStruct sapActionProperty[]{
-  { PRESS_SAP_MAIN_STATE_NONE,        CONF_ACTION_NOTHING,      CONF_ACTION_NOTHING,    CONF_ACTION_NOTHING, CONF_ACTION_NOTHING,                      0,     0 },
-  
-  // Puff actions
-  { PRESS_SAP_MAIN_STATE_PUFF,        CONF_ACTION_LEFT_CLICK,   CONF_ACTION_B1_PRESS,   CONF_ACTION_SELECT_MENU_ITEM, CONF_ACTION_SELECT_MENU_ITEM,    0,  1000 },
-  { PRESS_SAP_MAIN_STATE_PUFF,        CONF_ACTION_DRAG,         CONF_ACTION_B3_PRESS,   CONF_ACTION_NOTHING, CONF_ACTION_NOTHING,                   1000,  3000 },
-  { PRESS_SAP_MAIN_STATE_PUFF,        CONF_ACTION_START_MENU,   CONF_ACTION_START_MENU, CONF_ACTION_STOP_MENU, CONF_ACTION_NOTHING,                 3000,  8000 },
-
-  // Sip Actions
-  { PRESS_SAP_MAIN_STATE_SIP,         CONF_ACTION_RIGHT_CLICK,  CONF_ACTION_B2_PRESS,   CONF_ACTION_NEXT_MENU_ITEM, CONF_ACTION_NEXT_MENU_ITEM,       0, 1000 },
-  { PRESS_SAP_MAIN_STATE_SIP,         CONF_ACTION_SCROLL,       CONF_ACTION_B4_PRESS,   CONF_ACTION_NOTHING, CONF_ACTION_NOTHING,                  1000, 3000 },  
-  { PRESS_SAP_MAIN_STATE_SIP,         CONF_ACTION_MIDDLE_CLICK, CONF_ACTION_B5_PRESS,   CONF_ACTION_NOTHING, CONF_ACTION_NOTHING,                  3000, 8000 }
-};
 
 // Buttons built in to hub: S1 = Next, S2 = Select
 const inputActionStruct buttonActionProperty[]{

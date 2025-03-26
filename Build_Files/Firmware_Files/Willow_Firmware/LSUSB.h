@@ -28,9 +28,9 @@
 #define MOUSE_RIGHT 2
 #define MOUSE_MIDDLE 4
 #define MOUSE_ALL (MOUSE_LEFT | MOUSE_RIGHT | MOUSE_MIDDLE)
-#define MOUSE_DESCRIPTOR "LipSync Mouse" // TODO 2025-Feb-21 Unused due to Tiny USB library hang
+#define MOUSE_DESCRIPTOR "Willow Mouse" // TODO 2025-Feb-21 Unused due to Tiny USB library hang
 
-#define GAMEPAD_DESCRIPTOR "LipSync Gamepad" // TODO 2025-Feb-21 Unused due to Tiny USB library hang
+#define GAMEPAD_DESCRIPTOR "Willow Gamepad" // TODO 2025-Feb-21 Unused due to Tiny USB library hang
 
 extern unsigned int g_usbAttempt;  // global variable to keep track of USB connection attempts
 extern void usbCheckConnection(void);

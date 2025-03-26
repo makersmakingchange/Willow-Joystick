@@ -27,7 +27,6 @@
 #include "LSBLE.h"
 #include "LSCircularBuffer.h"
 #include "LSInput.h"
-#include "LSPressure.h"
 #include "LSJoystick.h"
 #include "LSMemory.h"
 #include "LSScreen.h"
@@ -45,10 +44,8 @@ int g_lightMode;      // 0 = None, 1 = Basic, 2 = Advanced
 
 int g_debugMode;  // 0 = Debug mode is Off
                   // 1 = Joystick debug mode is On
-                  // 2 = Pressure debug mode is On
                   // 3 = Buttons debug mode is On
                   // 4 = Switch debug mode is On
-                  // 5 = Sip & Puff state debug mode is On
 
 int g_errorCode = 0;  // Global variable for storing error code. 0 is no error. Additional errors defined in LSConfig.h
 
@@ -63,8 +60,6 @@ bool g_usbIsConnected = false;  // USB Connection state
 
 bool g_displayConnected = false;                   // Display connection state
 bool g_joystickSensorConnected = false;            // Joystick sensor connection state
-bool g_mouthpiecePressureSensorConnected = false;  // Mouthpiece pressure sensor connection state
-bool g_ambientPressureSensorConnected = false;     // Ambient pressure sensor connection state
 
 // LED module variables
 ledStateStruct* ledCurrentState = new ledStateStruct;  // pointer to LED current state structure
@@ -81,10 +76,6 @@ int inputSwitchPinArray[] = { CONF_SWITCH1_PIN, CONF_SWITCH2_PIN, CONF_SWITCH3_P
 LSInput ib(inputButtonPinArray, CONF_BUTTON_NUMBER);  // Instance of input button object (tactile buttons on Hub)
 LSInput is(inputSwitchPinArray, CONF_SWITCH_NUMBER);  // Create an instance of the input switch object (external switches)
 
-inputStateStruct sapActionState;
-
-int sapActionSize;
-unsigned long sapActionMaxTime = 0;
 
 // Timer related variables
 int actionTimerId[1];  // 1 action timer
@@ -127,7 +118,6 @@ unsigned long afterComOpMillis;
 // Create instances of classes
 LSMemory mem;     // Create an instance of LSMemory for managing flash memory.
 LSJoystick js;    // Create an instance of the LSJoystick object
-LSPressure ps;    // Create an instance of the LSPressure object
 LSOutput led;     // Create an instance of the LSOutput LED object
 LSScreen screen;  // Create an instance of the LSScreen Object for OLED Screen
 LSBuzzer buzzer;  // Create an instance of the LSBuzzer Object
@@ -206,10 +196,6 @@ void setup() {
     screen.splashScreen();
   }
 
-  if (g_mouthpiecePressureSensorConnected && g_ambientPressureSensorConnected) {
-    initSipAndPuff();  // Initialize Sip And Puff
-  }
-
   if (g_joystickSensorConnected) {
     initJoystick();  // Initialize Joystick
   }
@@ -223,7 +209,6 @@ void setup() {
   if (USB_DEBUG) { Serial.println("USBDEBUG: Initialize timers."); }
   // Configure poll timer to perform each feature as a separate loop
   pollTimerId[CONF_TIMER_JOYSTICK] = pollTimer.setInterval(CONF_JOYSTICK_POLL_RATE, 0, joystickLoop);  // poll rate, start delay, function
-  pollTimerId[CONF_TIMER_PRESSURE] = pollTimer.setInterval(CONF_PRESSURE_POLL_RATE, 0, pressureLoop);
   pollTimerId[CONF_TIMER_INPUT] = pollTimer.setInterval(CONF_INPUT_POLL_RATE, 0, inputLoop);
   pollTimerId[CONF_TIMER_BLUETOOTH] = pollTimer.setInterval(CONF_BT_FEEDBACK_POLL_RATE, 0, btFeedbackLoop);
   pollTimerId[CONF_TIMER_DEBUG] = pollTimer.setInterval(CONF_DEBUG_POLL_RATE, 0, debugLoop);
@@ -252,14 +237,6 @@ void setup() {
     pollTimer.disable(CONF_TIMER_SCREEN);
   }
 
-  if (g_mouthpiecePressureSensorConnected && g_ambientPressureSensorConnected) {
-    pollTimer.enable(CONF_TIMER_PRESSURE);
-    if (USB_DEBUG) { Serial.println("USBDEBUG: Pressure timer started."); }
-  } else {
-    pollTimer.disable(CONF_TIMER_PRESSURE);
-    if (USB_DEBUG) { Serial.println("USBDEBUG: Pressure timer NOT started."); }
-  }
-
   if (g_joystickSensorConnected) {
     pollTimer.enable(CONF_TIMER_JOYSTICK);
     pollTimer.enable(CONF_TIMER_SCROLL);
@@ -269,7 +246,7 @@ void setup() {
   }
 
   // If any devices are not connected, handle error
-  if (!g_displayConnected || !g_mouthpiecePressureSensorConnected || !g_ambientPressureSensorConnected || !g_joystickSensorConnected) {
+  if (!g_displayConnected || !g_joystickSensorConnected) {
     hardwareErrorCheck();
   }
 
@@ -332,7 +309,6 @@ void initGlobals() {
   if (USB_DEBUG) { Serial.println("USBDEBUG: initGlobals()"); } //  Won't display as function called before serial established
 
   g_lastRebootReason = 0;
-  g_ambientPressureSensorConnected = false;
   g_joystickSensorConnected = false;
   g_displayConnected = false;
   g_usbIsConnected = false;
@@ -375,33 +351,14 @@ void hardwareErrorCheck(void) {
     g_safeModeReason = CONF_SAFE_MODE_REASON_HARDWARE;
   }
 
-  if (!g_joystickSensorConnected && !g_mouthpiecePressureSensorConnected && !g_ambientPressureSensorConnected) {
+  if (!g_joystickSensorConnected) {
     // All joystick sensors not detected
     buzzer.playErrorSound();
     Serial.println("ERROR: No sensors detected in joystick. Check interface cable.");
     g_safeModeEnabled = true;
     g_safeModeReason = CONF_SAFE_MODE_REASON_HARDWARE;
     
-  } else if (!g_joystickSensorConnected || !g_mouthpiecePressureSensorConnected || !g_ambientPressureSensorConnected) {
-    // One or more sensors but not all
-    
-    g_safeModeEnabled = true;
-    g_safeModeReason = CONF_SAFE_MODE_REASON_HARDWARE;
-    
-    buzzer.playErrorSound();
-    if (!g_joystickSensorConnected) {
-      Serial.println("ERROR: Joystick sensor not detected.");
-    }
-    if (!g_mouthpiecePressureSensorConnected) {
-      Serial.println("ERROR: Mouthpiece Pressure Sensor not detected.");
-    }
-    if (!g_ambientPressureSensorConnected) {
-      Serial.println("ERROR: Ambient Pressure Sensor not detected.");
-    }
-    
-  }
-
-
+  } 
 }
 
 
@@ -557,7 +514,6 @@ void toggleSafeMode(bool safeModeEnabled) {
       
     // Disable poll timers
     //pollTimer.disable(CONF_TIMER_SCREEN);
-    pollTimer.disable(CONF_TIMER_PRESSURE);
     pollTimer.disable(CONF_TIMER_JOYSTICK);
     pollTimer.disable(CONF_TIMER_SCROLL);
     pollTimer.disable(CONF_TIMER_DEBUG);
@@ -624,12 +580,10 @@ void enablePoll(bool isEnabled) {
 
   if (isEnabled) {
     getDebugMode(false, false);
-    pollTimer.enable(CONF_TIMER_PRESSURE);
     pollTimer.enable(CONF_TIMER_INPUT);
     pollTimer.enable(CONF_TIMER_BLUETOOTH);
   } else {
     pollTimer.disable(CONF_TIMER_JOYSTICK);
-    pollTimer.disable(CONF_TIMER_PRESSURE);
     pollTimer.disable(CONF_TIMER_INPUT);
     pollTimer.disable(CONF_TIMER_BLUETOOTH);
     pollTimer.disable(CONF_TIMER_DEBUG);
@@ -1125,26 +1079,6 @@ void inputLoop() {
 // Sip and Puff Functions
 //*********************************//
 
-//***INITIALIZE SIP AND PUFF FUNCTION***//
-// Function   : initSipAndPuff
-//
-// Description: This function initializes sip and puff as inputs.
-//
-// Parameters : void
-//
-// Return     : void
-//****************************************//
-void initSipAndPuff() {
-  if (USB_DEBUG) { Serial.println("USBDEBUG: Initializing Sip and Puff"); }
-  ps.begin();                                                             // Begin sip and puff
-  getPressureMode(false, false);                                           // Get the pressure mode stored in flash memory ( 1 = Absolute , 2 = Differential )
-  getSipPressureThreshold(false, false);                                   // Get sip  pressure thresholds stored in flash memory
-  getPuffPressureThreshold(false, false);                                  // Get puff pressure thresholds stored in flash memory
-  sapActionSize = sizeof(sapActionProperty) / sizeof(inputActionStruct);  // Size of total available sip and puff actions
-  sapActionMaxTime = getActionMaxTime(sapActionSize, sapActionProperty);  // Maximum end action time
-}
-
-
 //***GET ACTION MAX TIME FUNCTION***//
 // Function   : getActionMaxTime
 //
@@ -1164,28 +1098,6 @@ unsigned long getActionMaxTime(int actionSize, const inputActionStruct actionPro
     }
   }
   return actionMaxTime;
-}
-
-//***PRESSURE LOOP FUNCTION***//
-// Function   : pressureLoop
-//
-// Description: This function handles pressure polling, sip and puff state evaluation.
-//
-// Parameters : void
-//
-// Return     : void
-//****************************************//
-void pressureLoop() {
-  //if (USB_DEBUG) { Serial.println("USBDEBUG: pressureLoop()"); }
-  ps.update();  // Request new pressure difference from sensor and push it to array
-
-  //pressureValues = ps.getAllPressure();  // Read the pressure object (can be last value from array, average or other algorithms)
-
-  // Get the last state change
-  sapActionState = ps.getState();
-
-  // Output action logic
-  evaluateOutputAction(sapActionState, sapActionMaxTime, sapActionSize, sapActionProperty);
 }
 
 //***RELEASE OUTPUT FUNCTION***//
@@ -1781,7 +1693,6 @@ void performJoystickCalibration(int* args) {
   if (stepNumber == 0) {                     // STEP 0: Calibration started
     pollTimer.disable(CONF_TIMER_JOYSTICK);  // Temporarily disable joystick data polling timer
     pollTimer.disable(CONF_TIMER_INPUT);
-    pollTimer.disable(CONF_TIMER_PRESSURE);
     setLedState(LED_ACTION_BLINK, CONF_JOY_CALIB_START_LED_COLOR, CONF_JOY_CALIB_LED_NUMBER, CONF_JOY_CALIB_STEP_BLINK, CONF_JOY_CALIB_STEP_BLINK_DELAY, led.getLedBrightness());
     performLedAction(ledCurrentState);
     ++stepNumber;
@@ -1817,7 +1728,6 @@ void performJoystickCalibration(int* args) {
     pollTimer.enable(CONF_TIMER_JOYSTICK);     // Re-Enable joystick data polling
     pollTimer.enable(CONF_TIMER_SCROLL);       // Re-enable scroll data polling
     pollTimer.enable(CONF_TIMER_INPUT);
-    pollTimer.enable(CONF_TIMER_PRESSURE);
     screen.fullCalibrationPrompt(stepNumber);  // update
     g_calibrationError = false;
   }
@@ -2052,14 +1962,6 @@ void debugLoop() {
     debugJoystickArray[1] = { (float)js.getXYIn().x, (float)js.getXYIn().y };    // Read the filtered values
     debugJoystickArray[2] = { (float)js.getXYOut().x, (float)js.getXYOut().y };  // Read the output values
     printResponseFloatPointArray(true, true, true, 0, "DEBUG,1", true, "", 3, ',', debugJoystickArray);
-  } else if (g_debugMode == CONF_DEBUG_MODE_PRESSURE) {  // Debug #2
-    ps.update();                                       // Request new pressure difference from sensor and push it to array
-    float debugPressureArray[4];
-    debugPressureArray[0] = ps.getSapPressureAbs();   // Read the main pressure
-    debugPressureArray[1] = ps.getAmbientPressure();  // Read the ref pressure
-    debugPressureArray[2] = ps.getSapPressure();      // Read the diff pressure
-    debugPressureArray[3] = ps.getOffsetPressure();      // Read the diff pressure    
-    printResponseFloatArray(true, true, true, 0, "DEBUG,2", true, "", 4, ',', debugPressureArray);
   } else if (g_debugMode == CONF_DEBUG_MODE_BUTTON) {  // Debug #3
     int debugButtonArray[3];
     debugButtonArray[0] = buttonState.mainState;         // Read the main state
@@ -2072,13 +1974,7 @@ void debugLoop() {
     debugSwitchArray[1] = switchState.secondaryState;    // Read the secondary state
     debugSwitchArray[2] = (int)switchState.elapsedTime;  // Read the Elapsed Time
     printResponseIntArray(true, true, true, 0, "DEBUG,4", true, "", 3, ',', debugSwitchArray);
-  } else if (g_debugMode == CONF_DEBUG_MODE_SAP) {  // Debug #5
-    int debugSapArray[3];
-    debugSapArray[0] = sapActionState.mainState;         // Read the main state
-    debugSapArray[1] = sapActionState.secondaryState;    // Read the secondary state
-    debugSapArray[2] = (int)sapActionState.elapsedTime;  // Read the Elapsed Time
-    printResponseIntArray(true, true, true, 0, "DEBUG,5", true, "", 3, ',', debugSapArray);
-  }
+  } 
 }
 
 //***SET DEBUG STATE FUNCTION***//
@@ -2136,31 +2032,7 @@ void checkI2C() {
     Serial.println("ERROR: Display: Not found");
     g_displayConnected = false;
   }
-
-  // Scan for Ambient Pressure Sensor
-  Wire.beginTransmission(I2CADDR_LPS22);
-  byte error_LPS22;
-  error_LPS22 = Wire.endTransmission();
-
-  if (error_LPS22 == 0) {
-    g_ambientPressureSensorConnected = true;  // Ambient pressure sensor found
-  } else {
-    Serial.println("ERROR: Ambient Pressure Sensor: Not found");
-    g_ambientPressureSensorConnected = false;
-  }
-
-  // Scan for Sip and Puff Sensor
-  Wire.beginTransmission(I2CADDR_LPS35HW);
-  byte error_LPS35HW;
-  error_LPS35HW = Wire.endTransmission();
-
-  if (error_LPS35HW == 0) {
-    g_mouthpiecePressureSensorConnected = true;  // Sip and Puff Sensor Found
-  } else {
-    Serial.println("ERROR: Mouthpiece Pressure Sensor: Not found");
-    g_mouthpiecePressureSensorConnected = false;
-  }
-
+  
   // Scan for Joystick Sensor
   Wire.beginTransmission(I2CADDR_TLV493D);
   byte error_TLV493D;
@@ -2580,4 +2452,3 @@ void softwareReset() {
   NVIC_SystemReset();
   
 }
-

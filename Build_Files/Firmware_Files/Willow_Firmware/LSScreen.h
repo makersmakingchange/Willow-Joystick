@@ -49,9 +49,6 @@
 #define SOUND_MENU 51
 #define LIGHT_BRIGHT_MENU 52
 #define SCROLL_SP_MENU 53
-#define SIP_PUFF_MENU 54
-#define SIP_THRESH_MENU 541
-#define PUFF_THRESH_MENU 542
 #define FULL_CALIB_PAGE 55
 #define FULL_CALIB_CONFIRM_PAGE 551
 #define RESTART_PAGE 56
@@ -77,8 +74,6 @@ int scrollPixelsPerLoop = 4;
 
 extern bool g_displayConnected;                   // Display connection state
 extern bool g_joystickSensorConnected;            // Joystick sensor connection state
-extern bool g_mouthpiecePressureSensorConnected;  // Mouthpiece pressure sensor connection state
-extern bool g_ambientPressureSensorConnected;     // Ambient pressure sensor connection state
 extern int g_safeModeReason;                      // Reason safe mode is triggered.
 
 class LSScreen {
@@ -156,9 +151,6 @@ private:
   String *_currentMenuText;
   String _selectedText;
 
-  float _sipPressThresh;
-  float _puffPressThresh;
-
   unsigned long _lastActivityMillis;
 
   uint8_t _hardwareErrorCode = 0; 
@@ -184,9 +176,6 @@ private:
   void centerReset();
   void soundMenu();
   void lightBrightMenu();
-  void sipPuffThreshMenu();
-  void adjustSipThreshMenu();
-  void adjustPuffThreshMenu();
   void restartConfirmPage();
   void factoryResetConfirm1Page();
   void factoryResetConfirm2Page();
@@ -201,13 +190,10 @@ private:
   String _modeMenuText[4] = { "MOUSE USB", "MOUSE BT", "GAMEPAD ", "... Back" };
   String _modeConfirmText[4] = { "Change", "mode?", "Confirm", "... Back" };
   String _cursorSpMenuText[4] = { "Speed: ", "Increase", "Decrease", "... Back" };
-  String _moreMenuText[8] = {  "Sound",  "Light Brightness", "Scroll Speed",   "Sip & Puff",  "Full Calibration",   "Restart LipSync",  "Factory Reset",  "... Back",  };
+  String _moreMenuText[7] = {  "Sound",  "Light Brightness", "Scroll Speed",  "Full Calibration",   "Restart LipSync",  "Factory Reset",  "... Back",  };
   String _soundMenuText[4] = { "Sound:", "<>", "Turn <>", "... Back" };
   String _lightBrightMenuText[4] = { "Lights: ", "Increase", "Decrease", "... Back" };
   String _scrollSpMenuText[4] = { "Speed: ", "Increase", "Decrease", "... Back" };
-  String _sipPuffThreshMenuText[4] = { "Sip Threshold", "Puff Threshold", "... Back" };
-  String _adjustSipThreshMenuText[4] = { "Sip: ", "Increase", "Decrease", "... Back" };
-  String _adjustPuffThreshMenuText[4] = { "Puff: ", "Increase", "Decrease", "... Back" };
   String _restartConfirmText[4] = { "Restart", "LipSync?", "Confirm", "... Back" };
   String _factoryResetConfirm1Text[4] = { "Reset to", "defaults?", "Confirm", "... Back" };
   String _factoryResetConfirm2Text[4] = { "Are you", "sure?", "Confirm", "... Back" };
@@ -220,13 +206,10 @@ private:
   const int _calibMenuLen = 2;
   const int _modeMenuLen = 4;
   const int _cursorSpMenuLen = 3;
-  const int _moreMenuLen = 8;
+  const int _moreMenuLen = 7;
   const int _soundMenuLen = 2;
   const int _lightBrightMenuLen = 3;
   const int _scrollSpMenuLen = 3;
-  const int _sipPuffThreshMenuLen = 3;
-  const int _adjustSipThreshMenuLen = 3;
-  const int _adjustPuffThreshMenuLen = 3;
   const int _restartConfirmLen = 2;
   const int _factoryResetConfirm1Len = 2;
   const int _factoryResetConfirm2Len = 2;
@@ -375,7 +358,7 @@ void LSScreen::splashScreen() {
   setupDisplay();
 
   _display.setTextSize(2);
-  drawCentreString("LipSync", 12);
+  drawCentreString("Willow", 12);
 
   _display.setTextSize(1);
   drawCentreString(lipsyncVersionStr, 32);
@@ -616,9 +599,6 @@ void LSScreen::selectMenuItem() {
         case 2:
           scrollSpeedMenu();
           break;
-        case 3: // Sip puff
-          sipPuffThreshMenu();
-          break;
         case 4: // Full Calibration
           fullCalibrationConfirmPage();
           break;
@@ -712,79 +692,6 @@ void LSScreen::selectMenuItem() {
           break;
       }
 
-      break;
-
-    case SIP_PUFF_MENU:
-      switch (_currentSelection) {
-        case 0:  // Sip
-          adjustSipThreshMenu();
-          break;
-        case 1:  // Puff
-          adjustPuffThreshMenu();
-          break;
-        case 2:
-          _currentMenu = MORE_MENU;
-          moreMenu();
-          break;
-      }
-      break;
-
-    case SIP_THRESH_MENU:
-      switch (_currentSelection) {
-        case 0:  // Increase
-          _sipPressThresh = getSipPressureThreshold(false, false);
-          _sipPressThresh++;  // Increase sip threshold by 1 ** TODO: CHANGE THIS, What values are we expecting? By how much to increase?
-          setSipPressureThreshold(false, false, _sipPressThresh);
-          _sipPressThresh = getSipPressureThreshold(false, false);          
-          _adjustSipThreshMenuText[0] = "Sip: " + String(_sipPressThresh) + " ";
-          _display.setCursor(0, 0);
-          _display.print(_adjustSipThreshMenuText[0]);
-          _display.display();
-          break;
-        case 1:  // Decrease
-          _sipPressThresh = getSipPressureThreshold(false, false);
-          _sipPressThresh--;  // Decrease sip threshold by 1 ** TODO: CHANGE THIS, What values are we expecting? By how much to increase?
-          setSipPressureThreshold(false, false, _sipPressThresh);
-          _sipPressThresh = getSipPressureThreshold(false, false);
-          _adjustSipThreshMenuText[0] = "Sip: " + String(_sipPressThresh) + " ";
-          _display.setCursor(0, 0);
-          _display.print(_adjustSipThreshMenuText[0]);
-          _display.display();
-          break;
-        case 2:  // Back
-          _currentMenu = SIP_PUFF_MENU;
-          sipPuffThreshMenu();
-          break;
-      }
-      break;
-
-    case PUFF_THRESH_MENU:
-      switch (_currentSelection) {
-        case 0:  // Increase
-          _puffPressThresh = getPuffPressureThreshold(false, false);
-          _puffPressThresh++;  //  Increase puff threshold by one ** TODO: CHANGE THIS, What values are we expecting? By how much to increase?
-          setPuffPressureThreshold(false, false, _puffPressThresh);
-          _puffPressThresh = getPuffPressureThreshold(false, false);
-          _adjustPuffThreshMenuText[0] = "Puff: " + String(_puffPressThresh) + " ";
-          _display.setCursor(0, 0);
-          _display.print(_adjustPuffThreshMenuText[0]);
-          _display.display();
-          break;
-        case 1:  // Decrease
-          _puffPressThresh = getPuffPressureThreshold(false, false);
-          _puffPressThresh--;  // Decrease puff threshold by one ** TODO: CHANGE THIS, What values are we expecting? By how much to increase?       
-          setPuffPressureThreshold(false, false, _puffPressThresh);
-          _puffPressThresh = getPuffPressureThreshold(false, false);          
-          _adjustPuffThreshMenuText[0] = "Puff: " + String(_puffPressThresh) + " ";
-          _display.setCursor(0, 0);
-          _display.print(_adjustPuffThreshMenuText[0]);
-          _display.display();
-          break;
-        case 2:  // Back
-          _currentMenu = SIP_PUFF_MENU;
-          sipPuffThreshMenu();
-          break;
-      }
       break;
 
     case FULL_CALIB_CONFIRM_PAGE:
@@ -1458,74 +1365,6 @@ void LSScreen::lightBrightMenu(void) {
   displayMenu();  //  Print items in current menu
 }
 
-//*********************************//
-// Function   : sipPuffThreshMenu
-//
-// Description: Format and display Sip and Puff Menu Page
-//
-// Arguments :  void
-//
-// Return     : void
-//*********************************//
-void LSScreen::sipPuffThreshMenu(void) {
-  _currentMenu = SIP_PUFF_MENU;
-
-  _currentMenuLength = _sipPuffThreshMenuLen;
-  _currentMenuText = _sipPuffThreshMenuText;
-  _cursorStart = 0;
-  _currentSelection = 0;
-  _countMenuScroll = 0;
-
-  displayMenu();  //  Print items in current menu
-}
-
-//*********************************//
-// Function   : adjustSipThreshMenu
-//
-// Description: Format and display Sip Threshold Adjustment Page
-//
-// Arguments :  void
-//
-// Return     : void
-//*********************************//
-void LSScreen::adjustSipThreshMenu(void) {
-  _currentMenu = SIP_THRESH_MENU;
-  _sipPressThresh = getSipPressureThreshold(false, false);
-
-  _adjustSipThreshMenuText[0] = "Sip: " + String(_sipPressThresh) + " ";
-
-  _currentMenuLength = _adjustSipThreshMenuLen;
-  _currentMenuText = _adjustSipThreshMenuText;
-  _cursorStart = 1;
-  _currentSelection = 0;
-  _countMenuScroll = 0;
-
-  displayMenu();  //  Print items in current menu
-}
-
-//*********************************//
-// Function   : adjustPuffThreshMenu
-//
-// Description: Format and display Puff Threshold Adjustment Page
-//
-// Arguments :  void
-//
-// Return     : void
-//*********************************//
-void LSScreen::adjustPuffThreshMenu(void) {
-  _currentMenu = PUFF_THRESH_MENU;
-  _puffPressThresh = getPuffPressureThreshold(false, false);
-
-  _adjustPuffThreshMenuText[0] = "Puff: " + String(_puffPressThresh) + " ";
-
-  _currentMenuLength = _adjustPuffThreshMenuLen;
-  _currentMenuText = _adjustPuffThreshMenuText;
-  _cursorStart = 1;
-  _currentSelection = 0;
-  _countMenuScroll = 0;
-
-  displayMenu();  //  Print items in current menu
-}
 
 //*********************************//
 // Function   : fullCalibrationConfirmPage
@@ -1706,25 +1545,13 @@ void LSScreen::hardwareErrorPage() {
 
   _display.println("ERROR:");
 
-  if (!g_joystickSensorConnected && !g_mouthpiecePressureSensorConnected && !g_ambientPressureSensorConnected) {
+  if (!g_joystickSensorConnected) {
     _display.println(" CABLE");
     _screenStateTimerId = _screenStateTimer.setTimeout(CONF_SAFEMODE_MENU_TIMEOUT, &LSScreen::errorPageCable, this);
-  } else {
-    _screenStateTimerId = _screenStateTimer.setTimeout(CONF_SAFEMODE_MENU_TIMEOUT, &LSScreen::errorPageI2C, this);
-    if (!g_joystickSensorConnected)
-      _display.println(" JOYSTICK");
-    if (!g_mouthpiecePressureSensorConnected)
-      _display.println(" PRESSURE");
-    if (!g_ambientPressureSensorConnected)
-      _display.println(" AMBIENT");
   }
 
   if (!g_joystickSensorConnected)
     _hardwareErrorCode |= 1 << 0;
-  if (!g_mouthpiecePressureSensorConnected)
-    _hardwareErrorCode |= 1 << 1;
-  if (!g_ambientPressureSensorConnected)
-    _hardwareErrorCode |= 1 << 2;
   if (!g_displayConnected)
     _hardwareErrorCode |= 1 << 3;
 

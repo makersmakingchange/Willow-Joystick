@@ -30,7 +30,7 @@ class LSBLEMouse {
 
   public:
     inline LSBLEMouse(void);
-    inline void begin(const char* s = "LipSync");
+    inline void begin(const char* s = "Willow");
     inline void end(void);
     inline void move(signed char x, signed char y);
     inline void moveAll(signed char x, signed char y, signed char wheel = 0, signed char pan = 0);
@@ -81,7 +81,7 @@ void initializeBluefruit(const char* s) {
   Bluefruit.setTxPower(4);                  // Check bluefruit.h for supported values
   Bluefruit.setName(s);
   bledis.setManufacturer("MakersMakingChange");
-  bledis.setModel("LipSync Mouse");
+  bledis.setModel("Willow Mouse");
   bledis.begin();
   blehid.begin();
   Bluefruit.Advertising.addFlags(BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE);

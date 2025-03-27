@@ -49,12 +49,12 @@
 #define SOUND_MENU 51
 #define LIGHT_BRIGHT_MENU 52
 #define SCROLL_SP_MENU 53
-#define FULL_CALIB_PAGE 55
-#define FULL_CALIB_CONFIRM_PAGE 551
-#define RESTART_PAGE 56
-#define FACTORY_RESET_PAGE 57
-#define FACTORY_RESET_CONFIRM2_PAGE 571
-#define INFO_PAGE 58
+#define FULL_CALIB_PAGE 54
+#define FULL_CALIB_CONFIRM_PAGE 541
+#define RESTART_PAGE 55
+#define FACTORY_RESET_PAGE 56
+#define FACTORY_RESET_CONFIRM2_PAGE 561
+#define INFO_PAGE 57
 
 #define SCROLL_DELAY_MILLIS 100 // [ms] This controls the scroll speed of long menu items //TODO 2025-Feb-28 Make this user adjustable
 
@@ -599,16 +599,16 @@ void LSScreen::selectMenuItem() {
         case 2:
           scrollSpeedMenu();
           break;
-        case 4: // Full Calibration
+        case 3: // Full Calibration
           fullCalibrationConfirmPage();
           break;
-        case 5: // Restart
+        case 4: // Restart
           restartConfirmPage();
           break;
-        case 6: // Factory Reset
+        case 5: // Factory Reset
           factoryResetConfirm1Page();
           break;
-        case 7: // Back
+        case 6: // Back
           mainMenu();
           break;
       }

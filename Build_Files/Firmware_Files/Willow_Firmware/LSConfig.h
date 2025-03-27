@@ -196,13 +196,13 @@ const String lipsyncVersionStr = String(CONF_LIPSYNC_VERSION_MAJOR) + "." + Stri
 
 // Polling Timer IDs for each module
 #define CONF_TIMER_JOYSTICK 0
-#define CONF_TIMER_INPUT 2
-#define CONF_TIMER_BLUETOOTH 3
-#define CONF_TIMER_DEBUG 4
-#define CONF_TIMER_SCROLL 5
-#define CONF_TIMER_SCREEN 6
-#define CONF_TIMER_USB 7
-#define CONF_TIMER_WATCHDOG 8
+#define CONF_TIMER_INPUT 1
+#define CONF_TIMER_BLUETOOTH 2
+#define CONF_TIMER_DEBUG 3
+#define CONF_TIMER_SCROLL 4
+#define CONF_TIMER_SCREEN 5
+#define CONF_TIMER_USB 6
+#define CONF_TIMER_WATCHDOG 7
 
 #define CONF_TIMER_LED_STARTUP 0
 #define CONF_TIMER_LED_IBM 1

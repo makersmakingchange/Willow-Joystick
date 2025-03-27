@@ -59,6 +59,8 @@
 
 #define JOY_OUTPUT_XY_MAX_GAMEPAD  127
 
+extern int g_operatingMode; 
+
 
 class LSJoystick {
   public:
@@ -167,7 +169,7 @@ void LSJoystick::begin() {
 
   _inputRadius = 0.0;                                                  // Initialize _inputRadius
   _skipInputChange = false;                                            // Initialize _skipInputChange
-  _operatingMode = getOperatingMode(false, false); //TODO 2025-Mar-06 Remove - Joystick class should be independent of operating mode
+  _operatingMode = g_operatingMode; //TODO 2025-Mar-06 Remove - Joystick class should be independent of operating mode
 
   _Tlv493dSensor.begin();  // TODO 2025-Feb-25 This will likely hang if it fails. Ideally replace with something that returns error/success.
   setMagnetDirection(JOY_DIRECTION_DEFAULT, JOY_DIRECTION_DEFAULT);      // Set default magnet direction.

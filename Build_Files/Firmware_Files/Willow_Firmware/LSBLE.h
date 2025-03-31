@@ -64,7 +64,7 @@ class LSBLEKeyboard : public Print
     uint8_t const _ascii2keycode[128][2] = {HID_ASCII_TO_KEYCODE};
   public:
     inline LSBLEKeyboard(void);
-    inline void begin(const char *s = "LipSync");
+    inline void begin(const char *s = "Willow");
     inline void end(void);
     inline size_t write(uint8_t k);
     inline size_t write(const uint8_t *buffer, size_t size);

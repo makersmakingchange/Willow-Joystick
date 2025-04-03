@@ -999,7 +999,7 @@ void beginComOpMode() {
           usbmouse.begin();
           break;
         case CONF_COM_MODE_BLE:  // Bluetooth Mouse
-          String btName = String("LS_") + String(g_deviceUID);  // Form Bluetooth name using device UID // TODO This may be limited to 15 characters
+          String btName = String("Willow_") + String(g_deviceUID);  // Form Bluetooth name using device UID // TODO This may be limited to 15 characters
           btmouse.begin(btName.c_str());
           break;
       }

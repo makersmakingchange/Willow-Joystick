@@ -1553,7 +1553,7 @@ void LSScreen::hardwareErrorPage() {
   if (!g_joystickSensorConnected)
     _hardwareErrorCode |= 1 << 0;
   if (!g_displayConnected)
-    _hardwareErrorCode |= 1 << 3;
+    _hardwareErrorCode |= 1 << 1;
 
   char buffer[10];
   sprintf(buffer, "ERROR-%03u", _hardwareErrorCode);

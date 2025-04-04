@@ -1,8 +1,8 @@
 /* 
 * File: LSTestS.ino
-* Firmware: LipSync
+* Firmware: Willow
 * Developed by: Neil Squire Society / Makers Making Change Program
-* Version: v4.1rc (10 March 2025)
+* Version: v1.0rc (April 4 2025)
   License: GPL v3.0 or later
 
   Copyright (C) 2024 - 2025 Neil Squire Society

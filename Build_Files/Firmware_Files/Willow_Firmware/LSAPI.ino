@@ -1,8 +1,8 @@
 /* 
 * File: LSAPI.h
-* Firmware: LipSync
+* Firmware: Willow
 * Developed by: MakersMakingChange
-* Version: v4.1rc (10 March 2025)
+* Version: v1.0rc (April 4 2025)
   License: GPL v3.0 or later
 
   Copyright (C) 2024 - 2025 Neil Squire Society
@@ -299,7 +299,7 @@ bool isValidDelimiter(char inputDelimiter) {
 //***GET MODEL NUMBER FUNCTION***//
 // Function   : getModelNumber
 //
-// Description: This function retrieves the current LipSync firmware model number.
+// Description: This function retrieves the current Willow firmware model number.
 //
 // Parameters :  responseEnabled : bool : The response for serial printing is enabled if it's set to true.
 //                                        The serial printing is ignored if it's set to false.
@@ -311,10 +311,10 @@ bool isValidDelimiter(char inputDelimiter) {
 void getModelNumber(bool responseEnabled, bool apiEnabled) {
   String commandKey = "MN";
   int tempModelNumber = mem.readInt(CONF_SETTINGS_FILE, commandKey);
-  if (tempModelNumber != CONF_LIPSYNC_MODEL) {                          // If the previous firmware was different model then reset the settings
+  if (tempModelNumber != CONF_WILLOW_MODEL) {                          // If the previous firmware was different model then reset the settings
     resetSettings(false, false);
 
-    tempModelNumber = CONF_LIPSYNC_MODEL;                               // And store the model number
+    tempModelNumber = CONF_WILLOW_MODEL;                               // And store the model number
     mem.writeInt(CONF_SETTINGS_FILE, commandKey, tempModelNumber);
   }
   printResponseInt(responseEnabled, apiEnabled, true, 0, "MN,0", true, tempModelNumber);
@@ -341,7 +341,7 @@ void getModelNumber(bool responseEnabled, bool apiEnabled, String optionalParame
 //***GET VERSION FUNCTION***//
 // Function   : getVersionNumber
 //
-// Description: This function retrieves the current LipSync firmware version number.
+// Description: This function retrieves the current Willow firmware version number.
 //
 // Parameters :  responseEnabled : bool : The response for serial printing is enabled if it's set to true.
 //                                        The serial printing is ignored if it's set to false.
@@ -357,36 +357,36 @@ void getVersionNumber(bool responseEnabled, bool apiEnabled) {
   int tempMinorVersionNumber = mem.readInt(CONF_SETTINGS_FILE, "VN2");
   int tempRevVersionNumber = mem.readInt(CONF_SETTINGS_FILE, "VN3");
   
-  if (tempMajorVersionNumber != CONF_LIPSYNC_VERSION_MAJOR) {                          // If the previous firmware was different version then reset the settings
+  if (tempMajorVersionNumber != CONF_WILLOW_VERSION_MAJOR) {                          // If the previous firmware was different version then reset the settings
     // could add factory reset here if version number saved in memory is different
-    tempMajorVersionNumber = CONF_LIPSYNC_VERSION_MAJOR;                               // And store the version number
+    tempMajorVersionNumber = CONF_WILLOW_VERSION_MAJOR;                               // And store the version number
     mem.writeInt(CONF_SETTINGS_FILE, "VN1", tempMajorVersionNumber);
     
-    tempMinorVersionNumber = CONF_LIPSYNC_VERSION_MINOR;                               // And store the version number
+    tempMinorVersionNumber = CONF_WILLOW_VERSION_MINOR;                               // And store the version number
     mem.writeInt(CONF_SETTINGS_FILE, "VN2", tempMinorVersionNumber);
 
-    tempRevVersionNumber = CONF_LIPSYNC_VERSION_REV;                               // And store the version number
+    tempRevVersionNumber = CONF_WILLOW_VERSION_REV;                               // And store the version number
     mem.writeInt(CONF_SETTINGS_FILE, "VN3", tempRevVersionNumber);
   }
 
-  else if (tempMinorVersionNumber != CONF_LIPSYNC_VERSION_MINOR) {                     // If the previous firmware was different version then reset the settings
+  else if (tempMinorVersionNumber != CONF_WILLOW_VERSION_MINOR) {                     // If the previous firmware was different version then reset the settings
     // could reset some settings here if version number saved in memory is different
-    tempMinorVersionNumber = CONF_LIPSYNC_VERSION_MINOR;                               // And store the version number
+    tempMinorVersionNumber = CONF_WILLOW_VERSION_MINOR;                               // And store the version number
     mem.writeInt(CONF_SETTINGS_FILE, "VN2", tempMinorVersionNumber);
 
-    tempRevVersionNumber = CONF_LIPSYNC_VERSION_REV;                                    // And store the version number
+    tempRevVersionNumber = CONF_WILLOW_VERSION_REV;                                    // And store the version number
     mem.writeInt(CONF_SETTINGS_FILE, "VN3", tempRevVersionNumber);
   }
 
-  else if (tempRevVersionNumber != CONF_LIPSYNC_VERSION_REV) {                          // If the previous firmware was different version then reset the settings
-    tempRevVersionNumber = CONF_LIPSYNC_VERSION_REV;                                    // And store the version number
+  else if (tempRevVersionNumber != CONF_WILLOW_VERSION_REV) {                          // If the previous firmware was different version then reset the settings
+    tempRevVersionNumber = CONF_WILLOW_VERSION_REV;                                    // And store the version number
     mem.writeInt(CONF_SETTINGS_FILE, "VN3", tempRevVersionNumber);
   }
   
 
-  String tempLipsyncVersionStr = String(tempMajorVersionNumber) + "." + String(tempMinorVersionNumber) + "." + String(tempRevVersionNumber);
+  String tempWillowVersionStr = String(tempMajorVersionNumber) + "." + String(tempMinorVersionNumber) + "." + String(tempRevVersionNumber);
   
-  printResponseString(responseEnabled, apiEnabled, true, 0, "VN,0", true, tempLipsyncVersionStr);
+  printResponseString(responseEnabled, apiEnabled, true, 0, "VN,0", true, tempWillowVersionStr);
 }
 //***GET VERSION API FUNCTION***//
 // Function   : getVersionNumber

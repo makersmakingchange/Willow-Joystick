@@ -1,8 +1,8 @@
 /* 
-* File: LipSync_Firmware.ino
-* Firmware: LipSync
+* File: Willow_Firmware.ino
+* Firmware: Willow
 * Developed by: MakersMakingChange
-* Version: v4.1rc (10 March 2025)
+* Version: v1.0rc (April 4 2025)
   License: GPL v3.0 or later
 
   Copyright (C) 2024 - 2025 Neil Squire Society
@@ -332,7 +332,7 @@ void initGlobals() {
 //***HARDWARE ERROR CHECK FUNCTION***//
 // Function   : hardwareErrorCheck
 //
-// Description: This function checks for errors with the LipSync hardware
+// Description: This function checks for errors with the Willow hardware
 //
 // Parameters : void
 //
@@ -379,7 +379,7 @@ void handleHardwareErrors(void) {
 //***ERROR CHECK FUNCTION***//
 // Function   : errorCheck
 //
-// Description: This function checks for errors with the LipSync device
+// Description: This function checks for errors with the Willow device
 //
 // Parameters : void
 //

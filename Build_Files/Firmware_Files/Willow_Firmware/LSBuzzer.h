@@ -1,8 +1,8 @@
 /* 
 * File: LSBuzzer.h
-* Firmware: LipSync
+* Firmware: Willow
 * Developed by: MakersMakingChange
-* Version: v4.1rc (10 March 2025)
+* Version: v1.0rc (April 4 2025)
   License: GPL v3.0 or later
 
   Copyright (C) 2024 - 2025 Neil Squire Society
@@ -227,7 +227,7 @@ void LSBuzzer::setSoundModeLevel(int inputSoundMode){
 //*********************************//
 // Function   : playStartupSound 
 // 
-// Description: Sound to play to indicate LipSync startup.
+// Description: Sound to play to indicate Willow startup.
 // 
 // Arguments :  void
 // 
@@ -242,7 +242,7 @@ void LSBuzzer::playStartupSound(){
 //*********************************//
 // Function   : playReadySound 
 // 
-// Description: Sound to play to indicate that LipSync is ready to use.
+// Description: Sound to play to indicate that Willow is ready to use.
 // 
 // Arguments :  void
 // 
@@ -259,7 +259,7 @@ void LSBuzzer::playReadySound(){
 //*********************************//
 // Function   : playErrorSound 
 // 
-// Description: Sound to play to indicate LipSync error.
+// Description: Sound to play to indicate Willow error.
 // 
 // Arguments :  void
 // 
@@ -274,7 +274,7 @@ void LSBuzzer::playErrorSound(){
 //*********************************//
 // Function   : playShutdownSound 
 // 
-// Description: Sound to play to indicate LipSync shutdown.
+// Description: Sound to play to indicate Willow shutdown.
 // 
 // Arguments :  void
 // 

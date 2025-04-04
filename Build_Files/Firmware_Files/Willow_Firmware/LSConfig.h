@@ -1,8 +1,8 @@
 /* 
 * File: LSConfig.h
-* Firmware: LipSync
+* Firmware: Willow
 * Developed by: MakersMakingChange
-* Version: v4.1rc (10 March 2025)
+* Version: v1.0rc (April 4 2025)
   License: GPL v3.0 or later
 
   Copyright (C) 2024 - 2025 Neil Squire Society
@@ -26,13 +26,13 @@
 #define CONF_ENABLE_WATCHDOG 1 // Set to 1 to enable hardware watchdog
 
 //***DO NOT CHANGE***//
-#define CONF_LIPSYNC_MODEL 1                // 1: Lipsync w/ Hub
+#define CONF_WILLOW_MODEL 1                // 1: Willow w/ Hub
 
-#define CONF_LIPSYNC_VERSION_MAJOR  1
-#define CONF_LIPSYNC_VERSION_MINOR  0
-#define CONF_LIPSYNC_VERSION_REV  0
+#define CONF_WILLOW_VERSION_MAJOR  1
+#define CONF_WILLOW_VERSION_MINOR  0
+#define CONF_WILLOW_VERSION_REV  0
 
-const String lipsyncVersionStr = String(CONF_LIPSYNC_VERSION_MAJOR) + "." + String(CONF_LIPSYNC_VERSION_MINOR) + "." + String(CONF_LIPSYNC_VERSION_REV);
+const String willowVersionStr = String(CONF_WILLOW_VERSION_MAJOR) + "." + String(CONF_WILLOW_VERSION_MINOR) + "." + String(CONF_WILLOW_VERSION_REV);
 
 // I2C Devices
 #define I2CADDR_DISPLAY 0x3D  // Display address (61)
@@ -391,7 +391,7 @@ const accStruct accProperty[]{
   { 9, 1.0, 0, 0 }
 };
 
-/* LIPSYNC INPUT AND OUTPUT MAPPING */
+/* WILLOW INPUT AND OUTPUT MAPPING */
 
 // Buttons built in to hub: S1 = Next, S2 = Select
 const inputActionStruct buttonActionProperty[]{

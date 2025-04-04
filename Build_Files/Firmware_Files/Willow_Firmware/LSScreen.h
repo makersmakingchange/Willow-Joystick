@@ -1,8 +1,8 @@
 /* 
 * File: LSScreen.h
-* Firmware: LipSync
+* Firmware: Willow
 * Developed by: MakersMakingChange
-* Version: v4.1rc (10 March 2025)
+* Version: v1.0rc (April 4 2025)
   License: GPL v3.0 or later
 
   Copyright (C) 2024 - 2025 Neil Squire Society
@@ -190,11 +190,11 @@ private:
   String _modeMenuText[4] = { "MOUSE USB", "MOUSE BT", "GAMEPAD ", "... Back" };
   String _modeConfirmText[4] = { "Change", "mode?", "Confirm", "... Back" };
   String _cursorSpMenuText[4] = { "Speed: ", "Increase", "Decrease", "... Back" };
-  String _moreMenuText[7] = {  "Sound",  "Light Brightness", "Scroll Speed",  "Full Calibration",   "Restart LipSync",  "Factory Reset",  "... Back",  };
+  String _moreMenuText[7] = {  "Sound",  "Light Brightness", "Scroll Speed",  "Full Calibration",   "Restart Willow",  "Factory Reset",  "... Back",  };
   String _soundMenuText[4] = { "Sound:", "<>", "Turn <>", "... Back" };
   String _lightBrightMenuText[4] = { "Lights: ", "Increase", "Decrease", "... Back" };
   String _scrollSpMenuText[4] = { "Speed: ", "Increase", "Decrease", "... Back" };
-  String _restartConfirmText[4] = { "Restart", "LipSync?", "Confirm", "... Back" };
+  String _restartConfirmText[4] = { "Restart", "Willow?", "Confirm", "... Back" };
   String _factoryResetConfirm1Text[4] = { "Reset to", "defaults?", "Confirm", "... Back" };
   String _factoryResetConfirm2Text[4] = { "Are you", "sure?", "Confirm", "... Back" };
   String _fullCalibrationConfirmText[4] = { "Are you", "sure?", "Confirm", "... Back" };
@@ -361,7 +361,7 @@ void LSScreen::splashScreen() {
   drawCentreString("Willow", 12);
 
   _display.setTextSize(1);
-  drawCentreString(lipsyncVersionStr, 32);
+  drawCentreString(willowVersionStr, 32);
   drawCentreString("Makers Making Change", 54);
 
   _display.display();

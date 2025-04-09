@@ -1,3 +1,12 @@
+Version 1.0.0 | 2025-04-09
+ - Updated CAD to final release
+ - Added non slip base
+ - Added more wrist ramps
+ - Updated toppers to gutter lock
+ - New firmware based on LipSync 4.1 release
+ - Added full documentation
+ - Added design files
+
 Version 0.9.0 | 2025-02-13
  - Initial Prototype
  - Magnetic low-force joystick

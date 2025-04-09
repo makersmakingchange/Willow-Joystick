@@ -3,11 +3,13 @@
 
 ## Overview
 <!--- A brief summary of the project. What it does, who it is for, how much it costs. --->
-The Willow joystick is a low force joystick that builds off the magnetic gimbal from the LipSync. The Willow is intended to fill a gap in the Makers Making Change joystick selection and provide a low force option similar to something like the Feather joystick.  
+The Willow joystick is a low force joystick, designed for users with low strength or range of motion that have difficulty using the higher force joysticks on the MMC site.
+ 
+The Willow is made up of the Willow Joystick and the Willow Hub. The Joystick is the primary user interface and contains a low-force Hall-Effect joystick. The Hub has a display that provides a graphical interface for independently adjusting settings, as well as it provides the connection to the host device and up to three external assistive switches with 3.5 mm jacks.
 
-The Willow is made up of the Willow Joystick and the Willow Hub. The Joystick is the primary user interface and contains a low-force Hall-Effect joytick. The Hub has a display that provides a graphical interface for independently adjusting settings, as well as it provides the connection to the host device and up to three external assistive switches with 3.5 mm jacks.
+The Willow uses a modified version of the LipSync firmware and is compatible with a range of host devices that can support a USB Mouse, a USB Gamepad and/or a Bluetooth Mouse. Compatible devices include PC and Mac computers and laptops, Android, iOS, and Windows smartphone and tablets, and the Xbox Adaptive Controller.
 
-The Willow is compatible with a range of host devices that are able to support a USB Mouse, a USB Gamepad and/or a Bluetooth Mouse. Compatible devices include PC and Mac computers and laptops, Android, iOS, and Windows smartphone and tablets, and the Xbox Adaptive Controller.
+The joystick requires 25 grams of force to operate and comes with 7 different swappable toppers. It has adaptors for both ¼-20 mounting arms and RAM B ball mount arms and has an optional nonslip base for use on a table. There is also a modifiable wrist ramp to help raise a user’s wrist while using the joystick.
 
 The device is comprised of off-the-shelf electronics and hardware, a custom PCB and 3D printed parts. The overall cost of materials (including materials required in bulk) for a single build is about $180 (plus shipping). In larger quantities, the cost of materials is closer to $135.
 

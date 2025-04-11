@@ -1,6 +1,5 @@
 # Willow Joystick
 
-
 ## Overview
 <!--- A brief summary of the project. What it does, who it is for, how much it costs. --->
 The Willow joystick is a low force joystick, designed for users with low strength or range of motion that have difficulty using the higher force joysticks on the MMC site.
@@ -15,7 +14,7 @@ The device is comprised of off-the-shelf electronics and hardware, a custom PCB 
 
 The Willow Joystick is open assistive technology (OpenAT). Under the terms of the open source licenses, the device may be built, used, and improved upon by anyone.
 
-<img src="Photos/Willow_Joystick.jpg" width="500" alt="Willow joystick.">
+<img src="Photos/Willow_Joystick.jpg" height="400" alt="Willow joystick."><img src="Photos/Willow_Joystick_With_Ramp.jpg" height="400" alt="Willow joystick."> 
 
 ## Makers Making Change Assistive Device Library
 Makers Making Change Assistive Device Library Listing:[<MMCWebLink>](<MMCWebLink>)
@@ -124,14 +123,14 @@ Designers:
  - Josie Versloot, Neil Squire Society / Makers Making Change.
  - Tyler Fentie, Neil Squire Society / Makers Making Change.
  - Jake McIvor, Neil Squire Society / Makers Making Change.
+ - Milad Hajihassan, Neil Squire Society / Makers Making Change.
 
 <!--- Testers:
  - <TESTER 1>
  - <TESTER 2> --->
 
-
 ---
-
+<!-- ABOUT MMC START -->
 ## About Makers Making Change
 <!--- This is standard boilerplate for Makers Making Change. No changes should be required. --->
 [<img src="https://raw.githubusercontent.com/makersmakingchange/makersmakingchange/main/img/mmc_logo.svg" width="500" alt="Makers Making Change Logo">](https://www.makersmakingchange.com/)
@@ -150,3 +149,4 @@ Makers Making Change leverages the capacity of community based Makers, Disabilit
 
 ### Contact Us
 For technical questions, to get involved, or to share your experience we encourage you to [visit our website](https://www.makersmakingchange.com/) or [contact us](https://www.makersmakingchange.com/s/contact).
+<!-- ABOUT MMC END -->

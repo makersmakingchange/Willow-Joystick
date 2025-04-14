@@ -1,11 +1,11 @@
 /* 
 * File: LSMemory.h
-* Firmware: LipSync
+* Firmware: Willow
 * Developed by: MakersMakingChange
-* Version: v4.0.1 (01 May 2024)
+* Version: v1.0rc (April 4 2025)
   License: GPL v3.0 or later
 
-  Copyright (C) 2024 Neil Squire Society
+  Copyright (C) 2024 - 2025 Neil Squire Society
   This program is free software: you can redistribute it and/or modify it under the terms of
   the GNU General Public License as published by the Free Software Foundation,
   either version 3 of the License, or (at your option) any later version.
@@ -16,7 +16,7 @@
   If not, see <http://www.gnu.org/licenses/>
 */
 
-//Header definition
+// Header definition
 #ifndef _LSMEMORY_H
 #define _LSMEMORY_H
 
@@ -106,7 +106,7 @@ void LSMemory::initialize(String fileString, String jsonString) {
     buffer[readlen] = 0;
     file.close();
     delay(5);
-  }else
+  } else
   {
     if( file.open(fileName, FILE_O_WRITE) )
     {

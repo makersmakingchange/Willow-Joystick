@@ -1,22 +1,30 @@
 # Willow Joystick
 
-
 ## Overview
-<!--- A brief summary of the project. What it does, who it is for, how much it costs. --->
-The Willow joystick is a low force joystick that builds off the magnetic gimbal from the LipSync. The Willow is intended to fill a gap in the Makers Making Change joystick selection and provide a low force option similar to something like the Feather joystick.  
+The Willow Joystick is a cost-effective, low force joystick that can be used for adaptive gaming or computer access. This joystick is intended for users with very low strength or range of motion. The joystick only requires about 25 grams of force to operate, and has a range of motion of ± 7.5° or about ±5 mm. 
 
-The Willow is made up of the Willow Joystick and the Willow Hub. The Joystick is the primary user interface and contains a low-force Hall-Effect joytick. The Hub has a display that provides a graphical interface for independently adjusting settings, as well as it provides the connection to the host device and up to three external assistive switches with 3.5 mm jacks.
+The Willow Joystick has a variety of options for customizing it for the user:
+ - Swappable Toppers: there are 7 different topper designs, including one that can be used with heat moldable polymer for a custom fit. 
+ - Wrist Ramps: there are several wrist rest options for  supporting the user's arm.
+ 
+The Willow is made up of the Willow Joystick and the Willow Hub. The Joystick is the primary user interface and contains a low-force Hall-Effect joystick. The Hub has a display that provides a graphical interface for independently adjusting settings, as well as it provides the connection to the host device and up to three external assistive switches with 3.5 mm jacks.
 
-The Willow is compatible with a range of host devices that are able to support a USB Mouse, a USB Gamepad and/or a Bluetooth Mouse. Compatible devices include PC and Mac computers and laptops, Android, iOS, and Windows smartphone and tablets, and the Xbox Adaptive Controller.
+The Willow is compatible with a range of host devices that can support a USB Mouse, a USB Gamepad and/or a Bluetooth Mouse. Compatible devices include PC and Mac computers and laptops, Android, iOS, and Windows smartphone and tablets, and the Xbox Adaptive Controller. As a USB joystick, the Willow is not compatible with the Sony Playstation Access Controller.  
+
+The joystick has adaptors for both ¼-20 mounting arms and RAM-B ball mount arms and has an optional nonslip base for use on a table. There is also a modifiable wrist ramp to help raise a user’s wrist while using the joystick.
 
 The device is comprised of off-the-shelf electronics and hardware, a custom PCB and 3D printed parts. The overall cost of materials (including materials required in bulk) for a single build is about $180 (plus shipping). In larger quantities, the cost of materials is closer to $135.
 
-The Willow Joystick is open assistive technology (OpenAT). Under the terms of the open source licenses, the device may be built, used, and improved upon by anyone.
+The Willow Joystick is Open Assistive Technology (OpenAT) and is certified as Open Source Hardware by the Open Source Hardware Association under the OSHWA UID [CA000062](https://certification.oshwa.org/ca000062.html). Under the terms of the open source licenses, the device may be built, used, and improved upon by anyone.
 
-<img src="Photos/Willow_Joystick.jpg" width="500" alt="Willow joystick.">
+<img src="Photos/Willow_Joystick.jpg" height="400" alt="Willow joystick."><img src="Photos/Willow_Joystick_With_Ramp.jpg" height="400" alt="Willow joystick."> 
 
 ## Makers Making Change Assistive Device Library
-Makers Making Change Assistive Device Library Listing:[<MMCWebLink>](<MMCWebLink>)
+ - https://www.makersmakingchange.com/s/product/willow-joystick/01tJR000007iDn7YAE
+
+## OpenAT Joysticks
+This design is part of the [OpenAT Joystick Project](https://github.com/makersmakingchange/OpenAT-Joysticks), a collection of open source designs for digital access and adapted gaming.  
+
 
 ## How to Obtain the Device
 ### 1. Do-it-Yourself (DIY) or Do-it-Together (DIT)
@@ -25,7 +33,7 @@ This is an open-source assistive technology, so anyone is free to build it. All 
 
 ### 2. Request a build of this device
 
-You may also submit a build request through the [Makers Making Change Assistive Device Library Listing](<MMCWebLink>) to have a volunteer maker build the device. As the requestor, you are responsible for reimbursing the maker for the cost of materials and any shipping.
+You may also submit a build request through the [Makers Making Change Assistive Device Library Listing](https://www.makersmakingchange.com/s/product/willow-joystick/01tJR000007iDn7YAE) to have a volunteer maker build the device. As the requestor, you are responsible for reimbursing the maker for the cost of materials and any shipping.
 
 ### 3. Build this device for someone else
 
@@ -33,24 +41,19 @@ If you have the skills and equipment to build this device, and would like to don
 
 
 ## Build Instructions
-<!--- Outline the major steps required to create a build --->
 
 ### 1. Read through the Maker Guide
-
-The [Maker Guide](/Documentation/Willow_Joystick_Maker_Guide.pdf)  contains all the necessary information to build this device, including tool lists, assembly instructions, programming instructions and testing.
+The [Maker Guide](/Documentation/Willow_Joystick_Maker_Guide.pdf) contains all the necessary information to build this device, including tool lists, assembly instructions, programming instructions and testing.
 
 
 ### 2. Order the Off-The-Shelf Components
-
 The [Bill of Materials](/Documentation/Willow_Joystick_BOM.xlsx) lists all of the parts and components required to build the device.
 
 
 ### 3. Print the 3D Printable components
-
 All of the files and individual print files can be found in the [/Build_Files/3D_Printing_Files](/Build_Files/3D_Printing_Files/) folder. 
 
 ### 4. Assemble the Willow Joystick
-
 Reference the Assembly Guide section of the [Maker Guide](/Documentation/Willow_Joystick_Maker_Guide.pdf) for the tools and steps required to build the device.
 
 ## How to improve this Device
@@ -58,7 +61,7 @@ As open source assistive technology, you are welcomed and encouraged to improve 
 
 ## Files
 ### Documentation
-<!--- Update the name, link, and version for documentation --->
+
 | Document             | Version | Link |
 |----------------------|---------|------|
 | Design Rationale     | 1.0     | [Willow_Joystick_Design_Rationale](/Documentation/Willow_Joystick_Design_Rationale.pdf)     |
@@ -92,8 +95,8 @@ Please see the CERN-OHL-W v2 for applicable conditions.
 Source Location: https://github.com/makersmakingchange/Willow-Joystick
 
 ## Attribution
-<!--- Provide any necessary attribution for designs or components that are included in the device or as part of the project. --->
-The device was designed by Makers Making Change / Neil Squire Society
+The Willow Joystick was designed by Makers Making Change / Neil Squire Society.
+The hardware and firmware for the Willow Hub is based on the [LipSync Hub]() designed by Makers Making Change / Neil Squire Society. 
 
 <!--- This is the attribution for the template. --->
 The documentation template was created by Makers Making Change / Neil Squire Society and is used under a CC BY-SA 4.0 license. It is available at the following link: [https://github.com/makersmakingchange/OpenAT-Template](https://github.com/makersmakingchange/OpenAT-Template)
@@ -122,14 +125,14 @@ Designers:
  - Josie Versloot, Neil Squire Society / Makers Making Change.
  - Tyler Fentie, Neil Squire Society / Makers Making Change.
  - Jake McIvor, Neil Squire Society / Makers Making Change.
+ - Milad Hajihassan, Neil Squire Society / Makers Making Change.
 
 <!--- Testers:
  - <TESTER 1>
  - <TESTER 2> --->
 
-
 ---
-
+<!-- ABOUT MMC START -->
 ## About Makers Making Change
 <!--- This is standard boilerplate for Makers Making Change. No changes should be required. --->
 [<img src="https://raw.githubusercontent.com/makersmakingchange/makersmakingchange/main/img/mmc_logo.svg" width="500" alt="Makers Making Change Logo">](https://www.makersmakingchange.com/)
@@ -148,3 +151,4 @@ Makers Making Change leverages the capacity of community based Makers, Disabilit
 
 ### Contact Us
 For technical questions, to get involved, or to share your experience we encourage you to [visit our website](https://www.makersmakingchange.com/) or [contact us](https://www.makersmakingchange.com/s/contact).
+<!-- ABOUT MMC END -->

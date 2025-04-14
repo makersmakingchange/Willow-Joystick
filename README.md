@@ -15,7 +15,7 @@ The joystick has adaptors for both ¼-20 mounting arms and RAM-B ball mount arms
 
 The device is comprised of off-the-shelf electronics and hardware, a custom PCB and 3D printed parts. The overall cost of materials (including materials required in bulk) for a single build is about $180 (plus shipping). In larger quantities, the cost of materials is closer to $135.
 
-The Willow Joystick is open assistive technology (OpenAT). Under the terms of the open source licenses, the device may be built, used, and improved upon by anyone.
+The Willow Joystick is Open Assistive Technology (OpenAT) and is certified as Open Source Hardware by the Open Source Hardware Association under the OSHWA UID [CA000062](https://certification.oshwa.org/ca000062.html). Under the terms of the open source licenses, the device may be built, used, and improved upon by anyone.
 
 <img src="Photos/Willow_Joystick.jpg" height="400" alt="Willow joystick."><img src="Photos/Willow_Joystick_With_Ramp.jpg" height="400" alt="Willow joystick."> 
 

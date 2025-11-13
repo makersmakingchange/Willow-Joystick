@@ -65,10 +65,10 @@ As open source assistive technology, you are welcomed and encouraged to improve 
 | Document             | Version | Link |
 |----------------------|---------|------|
 | Design Rationale     | 1.0     | [Willow_Joystick_Design_Rationale](/Documentation/Willow_Joystick_Design_Rationale.pdf)     |
-| Maker Guide          | 1.0     | [Willow_Joystick_Maker_Guide](/Documentation/Willow_Joystick_Maker_Guide.pdf)     |
+| Maker Guide          | 1.0.1     | [Willow_Joystick_Maker_Guide](/Documentation/Willow_Joystick_Maker_Guide.pdf)     |
 | Bill of Materials    | 1.0     | [Willow_Joystick_Bill_of_Materials](/Documentation/Willow_Joystick_BOM.xlsx)     |
 | User Guide           | 1.0     | [Willow_Joystick_User_Guide](/Documentation/Willow_Joystick_User_Guide.pdf)    |
-| Changelog            | 1.0     | [Changelog](CHANGES.txt)     |
+| Changelog            | 1.0.1     | [Changelog](CHANGES.txt)     |
 
 ### Design Files
  - [CAD Files](/Design_Files/CAD_Design_Files)
